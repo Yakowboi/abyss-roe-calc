@@ -1,5 +1,9 @@
-const DropdownContent = () => {
-  return <div>DropdownContent</div>;
+const DropdownContent = ({ children, openState }) => {
+  return (
+    <div className={`dropdown-content ${openState ? "opened" : ""}`}>
+      {children}
+    </div>
+  );
 };
 
 export default DropdownContent;
