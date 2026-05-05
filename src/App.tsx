@@ -7,11 +7,9 @@ function App() {
 
   return (
     <>
-      <Dropdown
-        buttonText="Button Text TESTING"
-        content={<p>LOREM IPSUM</p>}
-        dataObj={fishData}
-      />
+      <h1>Here's a nice heading</h1>
+
+      <Dropdown buttonText="Select a Fish..." dataObj={fishData} />
     </>
   );
 }
