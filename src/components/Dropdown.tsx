@@ -3,10 +3,11 @@ import DropdownBtn from "./Dropdown/DropdownBtn";
 import DropdownContent from "./Dropdown/DropdownContent";
 import DropdownItem from "./Dropdown/DropdownItem";
 
-function Dropdown({ buttonText, dataObj }) {
+function Dropdown({ buttonText, dataObj, getIdHandler }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItemName, setSelectedItemName] = useState();
   const [selectedItemClass, setSelectedItemClass] = useState();
+  const [selectedItemId, setSelectedItemId] = useState();
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -31,12 +32,17 @@ function Dropdown({ buttonText, dataObj }) {
     };
   }, [isOpen]);
 
-  const handleItemSelect = (valueFromItemName, valueFromItemClass) => {
+  const handleItemSelect = (
+    valueFromItemName,
+    valueFromItemClass,
+    valueFromItemId,
+  ) => {
     setSelectedItemName(valueFromItemName);
     setSelectedItemClass(valueFromItemClass);
+    setSelectedItemId(valueFromItemId);
     setIsOpen(false);
 
-    console.log(`clicked: ${valueFromItemName}`);
+    getIdHandler(valueFromItemId);
   };
 
   return (

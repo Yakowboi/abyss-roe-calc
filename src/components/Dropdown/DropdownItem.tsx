@@ -3,7 +3,11 @@ type DropdownItemProps = {
   itemId: string;
   itemClass: string;
   itemName: string;
-  onItemSelect: (nameValue: string, classValue: string) => void;
+  onItemSelect: (
+    nameValue: string,
+    classValue: string,
+    idValue: string,
+  ) => void;
 };
 
 const DropdownItem = ({
@@ -17,7 +21,7 @@ const DropdownItem = ({
     <div
       id={itemId}
       className={`dropdown-content-item ${itemClass ?? ""}`}
-      onClick={() => onItemSelect(itemName, itemClass)}
+      onClick={() => onItemSelect(itemName, itemClass, itemId)}
     >
       <p>{children}</p>
     </div>
