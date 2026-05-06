@@ -3,11 +3,27 @@ import DropdownBtn from "./Dropdown/DropdownBtn";
 import DropdownContent from "./Dropdown/DropdownContent";
 import DropdownItem from "./Dropdown/DropdownItem";
 
-function Dropdown({ buttonText, dataObj, getIdHandler }) {
+type BaseItem = {
+  id: string;
+  name: string;
+  rarity?: string;
+};
+
+type DropdownProps<T extends BaseItem> = {
+  buttonText: string;
+  dataObj: { data: T[] };
+  getIdHandler: (id: string) => void;
+};
+
+function Dropdown<T extends BaseItem>({
+  buttonText,
+  dataObj,
+  getIdHandler,
+}: DropdownProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItemName, setSelectedItemName] = useState();
-  const [selectedItemClass, setSelectedItemClass] = useState();
-  const [selectedItemId, setSelectedItemId] = useState();
+  const [selectedItemName, setSelectedItemName] = useState<string>("");
+  const [selectedItemClass, setSelectedItemClass] = useState<string>("");
+  const [selectedItemId, setSelectedItemId] = useState<string>("");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -33,9 +49,9 @@ function Dropdown({ buttonText, dataObj, getIdHandler }) {
   }, [isOpen]);
 
   const handleItemSelect = (
-    valueFromItemName,
-    valueFromItemClass,
-    valueFromItemId,
+    valueFromItemName: string,
+    valueFromItemClass: string,
+    valueFromItemId: string,
   ) => {
     setSelectedItemName(valueFromItemName);
     setSelectedItemClass(valueFromItemClass);
@@ -43,6 +59,7 @@ function Dropdown({ buttonText, dataObj, getIdHandler }) {
     setIsOpen(false);
 
     getIdHandler(valueFromItemId);
+    console.log(`previous id: ${selectedItemId}`);
   };
 
   return (

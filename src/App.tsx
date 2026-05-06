@@ -3,9 +3,9 @@ import { fishData } from "./data/fish";
 import Dropdown from "./components/Dropdown";
 
 function App() {
-  const [fishId, setFishId] = useState();
+  const [fishId, setFishId] = useState<string>("");
 
-  const getFishId = (selectedFishId) => {
+  const getFishId = (selectedFishId: string) => {
     setFishId(selectedFishId);
   };
 
