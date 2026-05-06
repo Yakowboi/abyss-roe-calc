@@ -1,12 +1,26 @@
 import { LuChevronDown, LuChevronUp } from "react-icons/lu";
 
-const DropdownBtn = ({ openState, toggleFunc, children }) => {
+type DropdownBtnProps = {
+  openState: boolean;
+  toggleFunc: () => void;
+  itemClass: string;
+  children: React.ReactNode;
+};
+
+const DropdownBtn = ({
+  openState,
+  toggleFunc,
+  itemClass,
+  children,
+}: DropdownBtnProps) => {
   return (
     <div
-      className={`dropdown-btn ${openState ? "opened" : ""}`}
+      className={`dropdown-btn ${itemClass ?? ""} ${openState ? "opened" : ""}`}
       onClick={toggleFunc}
     >
-      {children}
+      <div className="dropdown-btn-text">
+        <p>{children}</p>
+      </div>
       <span className="dropdown-btn-icon">
         {!openState ? <LuChevronDown size={21} /> : <LuChevronUp size={21} />}
       </span>
