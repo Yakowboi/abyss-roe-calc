@@ -56,6 +56,11 @@ $radiusSize: 10px;
     &.opened {
       background-color: $accent-border;
       border-color: $accent;
+
+      p {
+        text-shadow: none;
+        color: $text-h;
+      }
     }
 
     &-backdrop {
@@ -122,6 +127,11 @@ $radiusSize: 10px;
 
       &:hover {
         background-color: $accent-border;
+
+        p {
+          text-shadow: none;
+          color: $text-h;
+        }
       }
     }
   }
